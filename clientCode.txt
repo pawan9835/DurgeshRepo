@@ -29,4 +29,13 @@ public class MyClient {
 		return    "Finaly Get it :-  "+entity;
 	}
 
+
+
+
+
+   public void oneMethod(){
+
+
+System.out.println("Added One Method");
+
 }
