@@ -1,0 +1,32 @@
+package com.app.C_S_Servvices.Client;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+@Path(value="/client")
+public class MyClient {
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@GET
+	public String getAllMessage() {
+		String url = "http://localhost:2017/C_S_Servvices/webapi/myresource/inbox";
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(url);
+		Response response = target.request(MediaType.APPLICATION_JSON).get();
+		
+		
+		System.out.println(response);
+		String entity = response.readEntity(String.class);
+		
+		
+		System.out.println("Thanks "+entity);
+		return    "Finaly Get it :-  "+entity;
+	}
+
+}
